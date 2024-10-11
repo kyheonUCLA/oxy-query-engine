@@ -1,0 +1,43 @@
+# CLIENT FILES #
+
+# dependencies
+/oxy_frontend/node_modules
+/oxy_frontend/.pnp
+/oxy_frontend.pnp.js
+/oxy_frontend/.yarn/install-state.gz
+
+# testing
+/oxy_frontend/coverage
+
+# next.js
+/oxy_frontend/.next/
+client/oxy_frontend/out/
+
+# production
+/oxy_frontend/build
+
+# misc
+/oxy_frontend/.DS_Store
+/oxy_frontend/*.pem
+
+# debug
+/oxy_frontend/npm-debug.log*
+/oxy_frontend/yarn-debug.log*
+/oxy_frontend/yarn-error.log*
+
+# local env files
+/oxy_frontend/.env*.local
+
+# vercel
+/oxy_frontend/.vercel
+
+# typescript
+/oxy_frontend/*.tsbuildinfo
+/oxy_frontend/next-env.d.ts
+
+
+# SERVER FILES #
+/oxy_backend/venv
+**/__pycache__
+
+/oxy_backend/.env
