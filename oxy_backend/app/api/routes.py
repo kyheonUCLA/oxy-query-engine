@@ -1,8 +1,6 @@
 
 from llama_index.core import VectorStoreIndex
-from flask import request, jsonify, send_file, after_this_request, render_template
-import os
-from config import Config
+from flask import request, current_app, jsonify, send_file, after_this_request, render_template
 from app.api import api_bp as bp
 
 from app.services.db import connect_to_db, create_local_db
@@ -26,8 +24,7 @@ def home():
 
 @bp.route('/test2')
 def test():
-    db = connect_to_db("federal_regulations", 1024)
-    
+    db = current_app.config.get('db')
     print(db)
     return "test2"
 
@@ -35,7 +32,6 @@ def test():
 def test3():
     req = request.get_json()
     print(req['q'])
-
     index = create_local_db("./storage")
     query_engine = index.as_query_engine()
     response = query_engine.query(req['q'])
