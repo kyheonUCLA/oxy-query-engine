@@ -13,7 +13,7 @@ def home():
     documents = parse_pdf_documents('40 CFR Part 60 Subpart OOOOb.pdf')
     index = VectorStoreIndex.from_documents(documents)
     query_engine = index.as_query_engine()
-    response = query_engine.query(req['q'])
+    response = query_engine.query(req['query'])
     res = {
         'response': str(response.response),
         'source_nodes': [node.to_dict() for node in response.source_nodes]
@@ -31,10 +31,10 @@ def test():
 @bp.route('/test3', methods=['POST'])
 def test3():
     req = request.get_json()
-    print(req['q'])
+    print(req['query'])
     index = create_local_db("./storage")
     query_engine = index.as_query_engine()
-    response = query_engine.query(req['q'])
+    response = query_engine.query(req['query'])
     res = {
         'response': str(response.response),
         'source_nodes': [node.to_dict() for node in response.source_nodes]
